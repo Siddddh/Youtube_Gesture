@@ -1,0 +1,104 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Gesture Controller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-R0drV6tW4FHKRHsFA2+o1ZJt5R0oy7gCwQxijYabU81a7SgOSKiZ9pe4Cz7Q6o0k8A8/Yo9+HkIKzvCvVR0vYQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-hand-paper"></i> YouTube Gesture Controller
+            </a>
+            <div class="navbar-nav ms-auto flex-row">
+                <a class="nav-link px-3" href="/dashboard">Dashboard</a>
+                <a class="nav-link px-3" href="#" id="toggle-camera">
+                    <i class="fas fa-video"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Camera Feed</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <img id="video-feed" src="/video_feed" class="img-fluid" style="display: none;">
+                        <div id="camera-placeholder">
+                            <i class="fas fa-video"></i>
+                            <p class="mt-2">Click the camera icon to start</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-outline-primary" id="toggle-landmarks">
+                            <i class="fas fa-hand-sparkles"></i> Toggle Landmarks
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" id="toggle-debug">
+                            <i class="fas fa-bug"></i> Toggle Debug
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Current Gesture</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <h2 id="current-gesture">None</h2>
+                        <div class="progress mt-3">
+                            <div id="confidence-bar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <small>Confidence: <span id="confidence-value">0%</span></small>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Performance Metrics</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>FPS:</span>
+                            <span id="fps-value">0</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Inference Time:</span>
+                            <span id="inference-value">0ms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Gesture Commands</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fas fa-hand-paper"></i> Open Palm: Play/Pause</li>
+                            <li><i class="fas fa-fist-raised"></i> Fist: Play/Pause</li>
+                            <li><i class="fas fa-hand-peace"></i> Two Fingers: Volume Up</li>
+                            <li><i class="fas fa-hand-rock"></i> Ring+Pinky: Volume Down</li>
+                            <li><i class="fas fa-hand-point-up"></i> Pinky: Next Video</li>
+                            <li><i class="fas fa-hand-pointer"></i> All except Pinky: Previous</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

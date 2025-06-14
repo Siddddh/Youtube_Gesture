@@ -1,0 +1,16 @@
+{
+    "timestamp": "20250608_164426",
+    "gesture_names": [
+        "play",
+        "pause",
+        "volume_up",
+        "volume_down",
+        "next_video",
+        "previous_video",
+        "fullscreen",
+        "mute",
+        "speed_up",
+        "speed_down"
+    ],
+    "total_samples": 1041
+}

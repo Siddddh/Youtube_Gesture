@@ -1,0 +1,23 @@
+{
+    "timestamp": "2025-06-08 19:56:44",
+    "num_classes": 10,
+    "classes": [
+        "fullscreen",
+        "mute",
+        "next_video",
+        "pause",
+        "play",
+        "previous_video",
+        "speed_down",
+        "speed_up",
+        "volume_down",
+        "volume_up"
+    ],
+    "input_shape": 86,
+    "final_accuracy": 1.0,
+    "final_loss": 3.983980434441037e-08,
+    "final_precision": 1.0,
+    "final_recall": 1.0,
+    "total_epochs": 78,
+    "best_val_accuracy": 1.0
+}
